@@ -1,5 +1,6 @@
 int armstrong(int);
 #include<stdio.h>
+#include<math.h>
 
 int main(){
 	int num;
@@ -13,11 +14,22 @@ int main(){
 	return 0;
 }
 
+int countDigits(int num){
+	int count=0;
+	while(num!=0){
+		count++;
+		num/=10;
+	}
+	return count;
+}
+
 int armstrong(int num){
 	int temp=num,rem,sum=0;
+
+	int count=countDigits(num);
 	while(num>0){
 		rem=num%10;
-		sum+=rem*rem*rem;
+		sum+=pow(rem,count);
 		num/=10;
 	}
 	
